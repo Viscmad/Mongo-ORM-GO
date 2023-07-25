@@ -22,8 +22,6 @@ func main() {
 		panic(err)
 	}
 
-	fmt.Println("Client", client)
-
 	db := client.Database("test_db")
 
 	// Create new user
@@ -55,9 +53,9 @@ func main() {
   fmt.Printf("User updated: %v\n", user)
   
   // Delete a user by _id
-  // err = user.Delete(context.Background(), db, "users", bson.M{"_id": user.ID})
-  // if err != nil {
-  //   panic(err)
-  // }
-  // fmt.Printf("User deleted")
+  err = user.Delete(context.Background(), db, "users", bson.M{"_id": user.ID})
+  if err != nil {
+    panic(err)
+  }
+  fmt.Printf("User deleted")
 }
